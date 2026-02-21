@@ -1,0 +1,19 @@
+# Sitemap for LearnHub
+User-agent: *
+
+# Allow
+Allow: /
+Allow: /courses
+Allow: /course/*
+
+# Disallow protected routes
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /watch/*
+Disallow: /api/*
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://studymeta.in/sitemap.xml
