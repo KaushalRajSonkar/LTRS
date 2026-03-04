@@ -7,37 +7,25 @@ const { authenticate, optionalAuth } = require('../middleware/auth');
  * GET /api/courses
  * Fetch all courses (public)
  */
-router.get('/courses', optionalAuth, async (req, res) => {
-    try {
-        const { data: courses, error } = await supabaseAdmin
-            .from('courses')
-            .select(`
-        *,
-        lectures(count)
-      `)
-            .order('created_at', { ascending: false });
+router.get("/", async (req, res) => {
+  try {
 
-        if (error) throw error;
+    const { data: courses, error } = await supabaseAdmin
+      .from("courses")
+      .select("*");
 
-        // If user is authenticated, check enrollments
-        if (req.user) {
-            const { data: enrollments } = await supabaseAdmin
-                .from('enrollments')
-                .select('course_id')
-                .eq('user_id', req.user.id);
-
-            const enrolledIds = new Set(enrollments?.map(e => e.course_id) || []);
-
-            courses.forEach(course => {
-                course.isEnrolled = enrolledIds.has(course.id);
-            });
-        }
-
-        res.json({ courses });
-    } catch (error) {
-        console.error('Get courses error:', error);
-        res.status(500).json({ error: 'Failed to fetch courses' });
+    if (error) {
+      return res.status(500).json({ error: error.message });
     }
+
+    res.json({
+      courses: courses
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch courses" });
+  }
 });
 
 /**
