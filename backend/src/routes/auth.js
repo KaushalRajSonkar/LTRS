@@ -127,20 +127,19 @@ router.post('/login', async (req, res) => {
 const isAdmin = roles?.some(r => r.role === 'admin') || false;
 
 res.json({
+    message: 'Login successful',
     user: {
-        id: user.id,
-        email: user.email,
+        id: data.user.id,
+        email: data.user.email,
         username: profile?.username,
-        avatar_url: profile?.avatar_url,
-        isAdmin
+        isAdmin: !!roleData
+    },
+    session: {
+        access_token: data.session.access_token,
+        refresh_token: data.session.refresh_token,
+        expires_at: data.session.expires_at
     }
 });
-            session: {
-                access_token: data.session.access_token,
-                refresh_token: data.session.refresh_token,
-                expires_at: data.session.expires_at
-            }
-        });
     } catch (error) {
         console.error('Login error:', error);
         res.status(500).json({ error: 'Login failed' });
