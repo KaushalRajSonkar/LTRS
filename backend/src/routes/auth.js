@@ -119,21 +119,22 @@ router.post('/login', async (req, res) => {
             .single();
 
         // Check if user is admin
-        const { data: roleData } = await supabaseAdmin
-            .from('user_roles')
-            .select('role')
-            .eq('user_id', data.user.id)
-            .eq('role', 'admin')
-            .single();
+       const { data: roles } = await supabaseAdmin
+    .from('user_roles')
+    .select('role')
+    .eq('user_id', user.id);
 
-        res.json({
-            message: 'Login successful',
-            user: {
-                id: data.user.id,
-                email: data.user.email,
-                username: profile?.username,
-                isAdmin: !!roleData
-            },
+const isAdmin = roles?.some(r => r.role === 'admin') || false;
+
+res.json({
+    user: {
+        id: user.id,
+        email: user.email,
+        username: profile?.username,
+        avatar_url: profile?.avatar_url,
+        isAdmin
+    }
+});
             session: {
                 access_token: data.session.access_token,
                 refresh_token: data.session.refresh_token,
