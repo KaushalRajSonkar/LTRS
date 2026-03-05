@@ -14,7 +14,7 @@ router.use(requireAdmin);
  * POST /api/admin/course
  * Create a new course
  */
-router.post('/course', async (req, res) => {
+router.post('/courses', async (req, res) => {
     try {
         const { title, description, thumbnail_url, instructor_name, duration_minutes } = req.body;
 
@@ -50,7 +50,7 @@ router.post('/course', async (req, res) => {
  * PUT /api/admin/course/:id
  * Update a course
  */
-router.put('/course/:id', async (req, res) => {
+router.put('/courses/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const { title, description, thumbnail_url, instructor_name, duration_minutes } = req.body;
@@ -83,7 +83,7 @@ router.put('/course/:id', async (req, res) => {
  * DELETE /api/admin/course/:id
  * Delete a course
  */
-router.delete('/course/:id', async (req, res) => {
+router.delete('/courses/:id', async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -105,7 +105,7 @@ router.delete('/course/:id', async (req, res) => {
  * POST /api/admin/lecture
  * Create a new lecture for a course
  */
-router.post('/lecture', async (req, res) => {
+router.post('/lectures', async (req, res) => {
     try {
         const { course_id, title, description, video_path, duration_seconds, order_index } = req.body;
 
@@ -167,7 +167,7 @@ router.post('/lecture', async (req, res) => {
  * PUT /api/admin/lecture/:id
  * Update a lecture
  */
-router.put('/lecture/:id', async (req, res) => {
+router.put('/lectures/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const { title, description, video_path, duration_seconds, order_index } = req.body;
