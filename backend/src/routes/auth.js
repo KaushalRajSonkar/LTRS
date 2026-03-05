@@ -105,7 +105,7 @@ router.post("/login", async (req, res) => {
         .select("role")
         .eq("user_id", data.user.id)
         .eq("role", "admin")
-        .single();
+        .maybeSingle();
 
 
     res.json({
