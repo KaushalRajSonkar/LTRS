@@ -10,31 +10,31 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: {
-    default: 'LearnHub - Master Skills with Expert-Led Courses',
-    template: '%s | LearnHub'
+    default: 'StudyMeta - Master Skills with Expert-Led Courses',
+    template: '%s | StudyMeta'
   },
   description: 'Learn in-demand skills with high-quality video courses taught by industry experts. Start your learning journey today.',
   keywords: ['online learning', 'video courses', 'education', 'skills', 'tutorials'],
-  authors: [{ name: 'LearnHub' }],
+  authors: [{ name: 'StudyMeta' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://studymeta.in',
-    siteName: 'LearnHub',
-    title: 'LearnHub - Master Skills with Expert-Led Courses',
+    siteName: 'StudyMeta',
+    title: 'StudyMeta - Master Skills with Expert-Led Courses',
     description: 'Learn in-demand skills with high-quality video courses taught by industry experts.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'LearnHub'
+        alt: 'StudyMeta'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LearnHub - Master Skills with Expert-Led Courses',
+    title: 'StudyMeta - Master Skills with Expert-Led Courses',
     description: 'Learn in-demand skills with high-quality video courses taught by industry experts.',
     images: ['/og-image.png']
   },
